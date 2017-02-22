@@ -1,3 +1,11 @@
+
+
+
+
+#result {
+  display: none;
+}
+
 html, body, div {
     /* Height and width fallback for older browsers. */
     height: 100%;
@@ -21,8 +29,6 @@ html {
   height: 100%;
   background: lightgrey;
 }
-
-
 
 img {
   max-width:100%;
