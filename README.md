@@ -1,8 +1,8 @@
-# Lear-Year
+# Leap-Year
 
 ####
 
-#### By **Xi Xia**
+#### By **Xi Xia, Ben Schenkenberger**
 
 ## Description
 
@@ -24,7 +24,7 @@ None known at this time.
 
 ## Support and contact details
 
-If there are issues/defects please contact triplextension@gmail.com
+If there are issues/defects please contact triplextension@gmail.com.
 
 ## Technologies Used
 
@@ -34,4 +34,4 @@ HTML, CSS, Bootstrap, JavaScript, Jquery
 
 This software is licensed under the MIT license
 
-Copyright (c) 2017 **Xi Xia**
+Copyright (c) 2017 **Xi Xia, Ben Schenkenberger**

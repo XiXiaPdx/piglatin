@@ -22,17 +22,7 @@ html {
   background: lightgrey;
 }
 
-.not{
-  display:none;
-}
 
-#result {
-  display:none;
-}
-
-h3 {
-  font-size: 30px;
-}
 
 img {
   max-width:100%;
