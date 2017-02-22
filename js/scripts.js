@@ -16,23 +16,26 @@ var rejoinCharacterArray = function (latinArray) {
 
 
 var translateString = function (inputString) {
-  for (j=0;j<inputString.length;j++)
-  if (checkLetterIsVowel(inputString[0])){
-     inputArray.push("ay");
-     console.log(inputArray);
-     return;
-  } else {
-
+  for (j=0;j<inputString.length;j++) {
+    if (checkLetterIsVowel(inputString[0])){
+       inputArray.push("ay");
+       return;
+    } else {
+      var consonant = inputString[0];
+      inputArray.push(consonant);
+      inputArray.splice(0,1);
+      console.log(inputArray);
+    };
   };
 };
 
 var checkLetterIsVowel = function (letter) {
   for (i=0;i<vowels.length;i++) {
-      if (letter[j] === vowels[i]) {
+      if (letter === vowels[i]) {
       return true;
     }
     else {
-      latinOutput = letter;
+
     }
   };
 };
