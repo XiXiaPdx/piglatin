@@ -1,29 +1,29 @@
 
 //business logic:
-
+var latinOutput;
+var englishInput;
+var vowels = ["a","e","i","o","u","A","E","I","O","U"];
 //Behavior1: A year that is NOT a leap year
-var leapYear = function(year) {
-  if ((year % 4 === 0) && (year % 100 !== 0) || (year % 400 === 0)) {
-    return true;
-  } else {
-    return false;
+var translateLetter = function (letter) {
+  for (i=0;i<vowels.length;i++) {
+      if (letter === vowels[i]) {
+      latinOutput = letter+"ay"
+      return;
+    }
+    else {
+      latinOutput = letter;
+    }
   }
 };
 
 //user interface logic:
-$(document).ready(function (){
-  $("form#leap-year").submit(function(event) {
+$(document).ready(function() {
+  $("form#englishForm").submit(function(event) {
       event.preventDefault();
-      var year = parseInt($("input#year").val());
-      var result = leapYear(year);
-      $(".year").text(year);
+      var englishInput = $("input#english").val();
+      translateLetter (englishInput);
 
-      if (!result) {                 // same as writing if (result === false)
-        $(".not").text("not");
-      } else {
-        $(".not").text("");
-      }
-
+      $("#result").text(latinOutput);
       $("#result").show();
   });
 });
