@@ -20,14 +20,23 @@ var translateString = function (inputString) {
     if (checkLetterIsVowel(inputString[0])){
        inputArray.push("ay");
        return;
-    } else {
-      var consonant = inputString[0];
-      inputArray.push(consonant);
-      inputArray.splice(0,1);
-      console.log(inputArray);
-    };
+    } else if
+        ((inputString[0] === "q" || inputString[0] === "Q") && (inputString[1] === "u" || inputString[1] ==="U")) {
+                inputArray.push(inputString[0]);
+                inputArray.push(inputString[1]);
+                inputArray.push("ay");
+                inputArray.splice(0,2);      
+                return;
+              }
+                else {
+                var consonant = inputString[0];
+                inputArray.push(consonant);
+                inputArray.splice(0,1);
+                console.log(inputArray);
+              };
+        };
   };
-};
+
 
 var checkLetterIsVowel = function (letter) {
   for (i=0;i<vowels.length;i++) {
