@@ -2,7 +2,9 @@
 //business logic:
 var latinOutput="";
 var englishInput;
-var vowels = ["a","e","i","o","u","A","E","I","O","U"];
+var vowels = /a|e|i|o|u/i;
+var alphabet =/[a-z]/i;
+var qu = /q|u/i;
 var inputArray = [];
 var masterArray =[];
 var endSymbol = []; // check word, if symbol at end, make endSymbol = that symbol. And chop off that symbol from the word. Run our program as usual.
@@ -14,14 +16,12 @@ var makeIndWordArrays = function(words){
 //Behavior1: A year that is NOT a leap year
 var makeIndCharacterArray = function (word) {
   inputArray=word.split("");
-    if(inputArray[inputArray.length - 1] ==="."){
-      endSymbol[0]=".";
-      inputArray.splice((inputArray.length-1),1);
-    } else {
+  endSymbol[0] = inputArray[inputArray.length - 1] ;
+    if(alphabet.test(endSymbol[0])){
       endSymbol[0]="";
+    } else {
+      inputArray.splice((inputArray.length-1),1);
     }
-    console.log(endSymbol);
-    console.log(inputArray);
 }
 
 var rejoinCharacterArray = function (latinArray) {
@@ -31,14 +31,12 @@ var rejoinCharacterArray = function (latinArray) {
 
 var translateString = function (inputString) {
   for (var j=0;j<inputString.length;j++) {
-    if (checkLetterIsVowel(inputString[0])){
+    if (vowels.test((inputString[0]))){
        inputArray.push("ay");
        return;
     } else if
-        ((inputString[0] === "q" || inputString[0] === "Q") && (inputString[1] === "u" || inputString[1] ==="U")) {
-              inputArray.push(inputString[0]);
-              inputArray.push(inputString[1]);
-              inputArray.push("ay");
+        (qu.test((inputString[0]))) {
+              inputArray.push("quay");
               inputArray.splice(0,2);
               return;
             }
@@ -46,26 +44,15 @@ var translateString = function (inputString) {
               var consonant = inputString[0];
               inputArray.push(consonant);
               inputArray.splice(0,1);
-              console.log(inputArray);
               };
         };
   };
 
-
-var checkLetterIsVowel = function (letter) {
-  for (var i=0;i<vowels.length;i++) {
-      if (letter === vowels[i]) {
-      return true;
-    }
-    else {
-
-    }
-  };
-};
 //user interface logic:
 $(document).ready(function() {
   $("form#englishForm").submit(function(event) {
       event.preventDefault();
+      latinOutput = "";
       var englishInput = $("input#english").val();
       makeIndWordArrays (englishInput);
 
@@ -74,8 +61,11 @@ $(document).ready(function() {
       translateString (inputArray);
       rejoinCharacterArray (inputArray);
       };
-
-      $("#result").text(latinOutput);
+      $("#result").find("h1").remove();
+      $("#result").prepend("<h1>"+latinOutput+"</h1>");
+      $("#result").prepend("<h1>"+englishInput+"</h1>");
       $("#result").show();
+      $("#englishForm").trigger("reset");
+
   });
 });
